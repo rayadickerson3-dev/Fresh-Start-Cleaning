@@ -27,7 +27,7 @@ async function load(){
  if(!session)return;
  loginForm.hidden=true; dash.hidden=false; msg.textContent="";
  const {data,error}=await db.from("booking_requests").select("*").order("id",{ascending:false});
- if(error){requests.innerHTML="<p>Dashboard access is not configured yet.</p>"; console.error(error); return;}
+ if(error){requests.innerHTML="<p>Dashboard access error: "+esc(error.message||"Unknown error")+"</p>"; console.error(error); return;}
  requests.innerHTML=data.length?data.map(r=>`<article class="card" style="margin:1rem 0"><h3>${esc(r.customer_name)}</h3><p><b>Email:</b> ${esc(r.email)}<br><b>Phone:</b> ${esc(r.phone)}<br><b>Service:</b> ${esc(r.service)}<br><b>Date:</b> ${esc(r.preferred_date||"Not specified")} <b>Time:</b> ${esc(r.preferred_time||"Not specified")}<br><b>Address:</b> ${esc(r.address||"Not specified")}</p><p>${esc(r.message||"")}</p><label>Status<select data-id="${r.id}" class="status"><option ${r.status==="pending"?"selected":""}>pending</option><option ${r.status==="approved"?"selected":""}>approved</option><option ${r.status==="declined"?"selected":""}>declined</option><option ${r.status==="reschedule"?"selected":""}>reschedule</option></select></label><label>Quote amount<input data-id="${r.id}" class="quote" type="number" step="0.01" value="${r.quote_amount??""}"></label><button class="button primary save" data-id="${r.id}">Save</button></article>`).join(""):"<p>No requests yet.</p>";
 }
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
