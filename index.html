@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fresh Start Cleaning provides personalized house cleaning services in Bemidji, MN and nearby surrounding areas." />
+  <title>Fresh Start Cleaning | Bemidji, MN</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Fresh Start Cleaning home"><img src="/assets/fresh-start-logo.png" alt="Fresh Start Cleaning logo" /></a>
+    <nav><a href="#services">Services</a><a href="#how">How It Works</a><a href="#about">About</a><a href="#request">Request</a></nav>
+    <a class="header-phone" href="tel:+12185568051">Call/Text 218-556-8051</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Bemidji, MN & nearby surrounding areas</p>
+        <h1>A fresh start<br><span>starts here.</span></h1>
+        <p class="hero-text">Reliable, detail-oriented cleaning with a personal touch. Request the cleaning you need, choose a preferred day and time, and Fresh Start Cleaning will personally review your request before anything is confirmed.</p>
+        <div class="hero-actions"><a class="button primary" href="#request">Request a Quote / Appointment</a><a class="button secondary" href="tel:+12185568051">Call / Text Us</a></div>
+        <div class="quick-points"><span>✨ Free estimates</span><span>🧹 Personalized service</span><span>📅 Owner-approved scheduling</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="blob blob-one"></div><div class="blob blob-two"></div><div class="sparkle s1">✦</div><div class="sparkle s2">✧</div><div class="sparkle s3">✦</div><div class="hero-card"><div class="card-icon">🫧</div><strong>Clean spaces.</strong><span>Fresh starts.</span></div></div>
+    </section>
+
+    <section class="intro"><p class="eyebrow">Cleaning made personal</p><h2>Tell us what your space needs. <span>We’ll take it from there.</span></h2><p>One-time clean, recurring service, moving clean, post-construction cleanup, or something completely customized — your request can be as specific as you want.</p></section>
+
+    <section class="services section" id="services">
+      <div class="section-heading"><div><p class="eyebrow">What we do</p><h2>Our cleaning services</h2></div><a class="text-link" href="#request">Tell us what you need →</a></div>
+      <div class="service-grid">
+        <article class="service-card"><div class="service-number">01</div><div class="service-icon">🧹</div><h3>Standard Cleaning</h3><p>Reliable routine cleaning to keep your home fresh, comfortable, and cared for.</p></article>
+        <article class="service-card featured"><div class="service-number">02</div><div class="service-icon">✨</div><h3>Deep Cleaning</h3><p>A more detailed reset for the rooms and surfaces that need extra attention.</p></article>
+        <article class="service-card"><div class="service-number">03</div><div class="service-icon">📦</div><h3>Move-In / Move-Out</h3><p>A thorough clean to help a home feel ready for the next chapter.</p></article>
+        <article class="service-card"><div class="service-number">04</div><div class="service-icon">🏠</div><h3>Post-Construction</h3><p>Dust, debris, and finishing cleanup after a remodel or construction project.</p></article>
+        <article class="service-card"><div class="service-number">05</div><div class="service-icon">💗</div><h3>Personalized Cleaning</h3><p>Need something different? Describe it and we can build the request around your priorities.</p></article>
+      </div>
+    </section>
+
+    <section class="how section" id="how">
+      <div class="section-heading"><div><p class="eyebrow">Simple and flexible</p><h2>How requests work</h2></div></div>
+      <div class="steps">
+        <article><span>1</span><h3>Tell us what you need</h3><p>Choose a service, describe your space, add special requests, and upload photos if they help explain the job.</p></article>
+        <article><span>2</span><h3>Pick your preferred time</h3><p>Send a date and time that works for you. This is a request — not an automatic booking.</p></article>
+        <article><span>3</span><h3>Fresh Start reviews it</h3><p>Your request is reviewed privately. We can approve it, decline it, or offer a different time.</p></article>
+        <article><span>4</span><h3>You get confirmation</h3><p>Once approved, we’ll contact you directly. You can also check your request status with your private request code.</p></article>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="about-image"><img src="/assets/fresh-start-logo.png" alt="Fresh Start Cleaning" /></div>
+      <div class="about-copy"><p class="eyebrow">Why Fresh Start?</p><h2>More than clean.<br><span>A fresh start.</span></h2><p>Fresh Start Cleaning serves Bemidji and nearby communities with dependable communication, attention to detail, and cleaning plans that make sense for each customer.</p><ul class="check-list"><li>Detail-oriented service</li><li>One-time and recurring options</li><li>Free estimates</li><li>Customized cleaning plans</li><li>No fake reviews or made-up testimonials</li></ul><a class="button primary" href="#request">Request Your Fresh Start</a></div>
+    </section>
+
+    <section class="request-section section" id="request">
+      <div class="request-intro"><p class="eyebrow">Free quote + appointment request</p><h2>Tell us exactly <span>what you’re looking for.</span></h2><p>Nothing is booked automatically. Your request goes to a private owner dashboard for review. We’ll approve it, decline it, or contact you about another time.</p><a class="phone-large" href="tel:+12185568051">218-556-8051</a></div>
+      <form id="requestForm" class="quote-form" enctype="multipart/form-data">
+        <div class="form-row"><label>Name<input required name="name" type="text" autocomplete="name" placeholder="Your name" /></label><label>Phone<input required name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" /></label></div>
+        <div class="form-row"><label>Cleaning service<select required name="service"><option value="">Select one</option><option>Standard Cleaning</option><option>Deep Cleaning</option><option>Move-In / Move-Out Cleaning</option><option>Post-Construction Cleaning</option><option>Personalized Cleaning</option></select></label><label>Frequency<select name="frequency"><option value="">Choose if applicable</option><option>One-time</option><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option><option>Not sure yet</option></select></label></div>
+        <label>Area / address<input name="addressArea" type="text" placeholder="Example: Bemidji, MN or nearby area" /></label>
+        <div class="form-row"><label>Preferred date<input name="preferredDate" type="date" /></label><label>Preferred time<input name="preferredTime" type="time" /></label></div>
+        <div class="form-row"><label>Bedrooms<input name="bedrooms" type="number" min="0" max="20" placeholder="Optional" /></label><label>Bathrooms<input name="bathrooms" type="number" min="0" max="20" step="0.5" placeholder="Optional" /></label></div>
+        <label>Describe what you’re looking for<textarea required name="details" rows="6" placeholder="Tell us about the home, problem areas, pets, priorities, special requests, move-out condition, construction dust, or anything else we should know."></textarea></label>
+        <label>Helpful photos <span class="optional">(optional, up to 5)</span><input name="photos" type="file" accept="image/*" multiple /></label>
+        <label>Best way to contact you<select name="contactPreference"><option>Text</option><option>Call</option></select></label>
+        <button class="button primary submit-button" type="submit">Send My Request ✨</button>
+        <p class="form-note">Submitting this form is a request only. Your appointment is not confirmed until Fresh Start Cleaning approves it.</p>
+        <div id="formMessage" class="form-message" role="status"></div>
+      </form>
+    </section>
+
+    <section class="status-section">
+      <div><p class="eyebrow">Already submitted?</p><h2>Check your request status</h2><p>Enter the request code you received after submitting.</p></div>
+      <form id="statusForm" class="status-form"><input name="code" placeholder="Example: FS-A1B2C3" required><button class="button secondary" type="submit">Check Status</button></form>
+      <div id="statusResult" class="status-result"></div>
+    </section>
+
+    <section class="instagram-banner"><div><p class="eyebrow">Follow along</p><h2>Fresh spaces, fresh starts. 💗</h2><p>See updates and more from Fresh Start Cleaning.</p></div><a class="button secondary" href="https://www.instagram.com/fresh_startclean/" target="_blank" rel="noopener">Follow @fresh_startclean</a></section>
+  </main>
+
+  <footer><div class="footer-brand"><img src="/assets/fresh-start-logo.png" alt="" /><div><strong>Fresh Start Cleaning</strong><span>Bemidji, MN & nearby surrounding areas</span></div></div><div class="footer-links"><a href="tel:+12185568051">218-556-8051</a><a href="#request">Request a Quote</a><a href="https://www.instagram.com/fresh_startclean/" target="_blank" rel="noopener">Instagram</a></div><p class="copyright">© <span id="year"></span> Fresh Start Cleaning. Clean spaces, fresh starts.</p></footer>
+  <script src="/script.js"></script>
+</body>
+</html>
