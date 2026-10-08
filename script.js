@@ -50,7 +50,7 @@ if (form) {
     } catch (error) {
       console.error("Booking submission error:", error);
       if (message) {
-        message.textContent = "We couldn't send your request yet. Please call or text 218-556-8051.";
+        message.textContent = "We couldn't send your request yet. " + (error.message || "Please call or text 218-556-8051.");
         message.className = "form-message error";
       }
     }
