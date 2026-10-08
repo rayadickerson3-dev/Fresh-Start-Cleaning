@@ -1,5 +1,5 @@
 const SUPABASE_URL = "https://kltdaaqzexezniedsnpm.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_dd2h2FUlGv-LwQLjMfIlw_1Wz2xLk-";
+const SUPABASE_ANON_KEY = "sb_publishable_dd2h2FUlIVgL-WQLjMfIlw_1Wz2xLk-";
 
 const form = document.getElementById("requestForm");
 const message = document.getElementById("formMessage");
