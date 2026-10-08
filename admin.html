@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fresh Start Cleaning — Owner Login</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<main class="section" style="max-width:520px;margin:auto">
+  <h1>Owner Dashboard</h1>
+  <p>Private access for Fresh Start Cleaning.</p>
+  <form id="loginForm" class="quote-form">
+    <label>Email<input required id="email" type="email" autocomplete="email"></label>
+    <label>Password<input required id="password" type="password" autocomplete="current-password"></label>
+    <button class="button primary" type="submit">Sign In</button>
+    <p id="loginMessage" class="form-message"></p>
+  </form>
+  <section id="dashboard" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2>Booking Requests</h2><button id="logout" class="button">Sign Out</button></div>
+    <div id="requests"></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const url="https://kltdaaqzexezniedsnpm.supabase.co";
+const key="sb_publishable_dd2h2FUlIVgL-WQLjMfIlw_1Wz2xLk-";
+const db=window.supabase.createClient(url,key);
+const loginForm=document.getElementById("loginForm"), msg=document.getElementById("loginMessage"), dash=document.getElementById("dashboard"), requests=document.getElementById("requests");
+async function load(){
+ const {data:{session}}=await db.auth.getSession();
+ if(!session)return;
+ loginForm.hidden=true; dash.hidden=false; msg.textContent="";
+ const {data,error}=await db.from("booking_requests").select("*").order("id",{ascending:false});
+ if(error){requests.innerHTML="<p>Dashboard access is not configured yet.</p>"; console.error(error); return;}
+ requests.innerHTML=data.length?data.map(r=>`<article class="card" style="margin:1rem 0"><h3>${esc(r.customer_name)}</h3><p><b>Email:</b> ${esc(r.email)}<br><b>Phone:</b> ${esc(r.phone)}<br><b>Service:</b> ${esc(r.service)}<br><b>Date:</b> ${esc(r.preferred_date||"Not specified")} <b>Time:</b> ${esc(r.preferred_time||"Not specified")}<br><b>Address:</b> ${esc(r.address||"Not specified")}</p><p>${esc(r.message||"")}</p><label>Status<select data-id="${r.id}" class="status"><option ${r.status==="pending"?"selected":""}>pending</option><option ${r.status==="approved"?"selected":""}>approved</option><option ${r.status==="declined"?"selected":""}>declined</option><option ${r.status==="reschedule"?"selected":""}>reschedule</option></select></label><label>Quote amount<input data-id="${r.id}" class="quote" type="number" step="0.01" value="${r.quote_amount??""}"></label><button class="button primary save" data-id="${r.id}">Save</button></article>`).join(""):"<p>No requests yet.</p>";
+}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+loginForm.addEventListener("submit",async e=>{e.preventDefault();msg.textContent="Signing in...";const {error}=await db.auth.signInWithPassword({email:email.value,password:password.value});if(error)msg.textContent=error.message;else load();});
+requests.addEventListener("click",async e=>{if(!e.target.classList.contains("save"))return;const id=e.target.dataset.id,status=document.querySelector('.status[data-id="'+id+'"]').value,quote=document.querySelector('.quote[data-id="'+id+'"]').value;const {error}=await db.from("booking_requests").update({status,quote_amount:quote?Number(quote):null}).eq("id",id);alert(error?error.message:"Saved.");if(!error)load();});
+logout.addEventListener("click",async()=>{await db.auth.signOut();location.reload();}); load();
+</script></body></html>
