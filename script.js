@@ -10,7 +10,7 @@ if (form) {
     const data = new FormData(form);
     const row = {
       customer_name: data.get("name") || "",
-      email: data.get("email") || "",
+      email: (form.querySelector('[name="email"]')?.value || "").trim(),
       phone: data.get("phone") || "",
       address: data.get("addressArea") || "",
       service: data.get("service") || "",
