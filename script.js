@@ -1,5 +1,5 @@
 const SUPABASE_URL = "https://kltdaaqzexezniedsnpm.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_dd2h2FUlIVgL-WQLjMfIlw_1Wz2xLk-";
+const SUPABASE_ANON_KEY = "sb_publishable_dd2h2FUlG-LwQLjMfIlw_1Wz2xLk-";
 
 const form = document.getElementById("requestForm");
 const message = document.getElementById("formMessage");
@@ -7,16 +7,28 @@ const message = document.getElementById("formMessage");
 if (form) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const emailField = form.elements.namedItem("email");
+    const email = emailField ? String(emailField.value || "").trim() : "";
+
+    if (!email) {
+      if (message) {
+        message.textContent = "Please enter your email address.";
+        message.className = "form-message error";
+      }
+      return;
+    }
+
     const data = new FormData(form);
     const row = {
-      customer_name: data.get("name") || "",
-      email: (form.querySelector('[name="email"]')?.value || "").trim(),
-      phone: data.get("phone") || "",
-      address: data.get("addressArea") || "",
-      service: data.get("service") || "",
+      customer_name: String(data.get("name") || "").trim(),
+      email: email,
+      phone: String(data.get("phone") || "").trim(),
+      address: String(data.get("addressArea") || "").trim(),
+      service: String(data.get("service") || "").trim(),
       preferred_date: data.get("preferredDate") || null,
-      preferred_time: data.get("preferredTime") || "",
-      message: data.get("details") || "",
+      preferred_time: String(data.get("preferredTime") || "").trim(),
+      message: String(data.get("details") || "").trim(),
       status: "pending"
     };
 
